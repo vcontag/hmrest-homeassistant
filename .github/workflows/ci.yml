@@ -31,7 +31,7 @@ jobs:
         uses: hacs/action@main
         with:
           category: integration
-          ignore: brands description topics
+          ignore: brands description topics license
 
   release:
     # Nur auf main und nur wenn Tests und Prüfungen grün sind. Legt v<version> an, falls es das Release noch nicht gibt.
