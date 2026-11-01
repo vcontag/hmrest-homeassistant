@@ -18,3 +18,37 @@ jobs:
         with:
           name: hmrest-install
           path: dist/*.zip
+
+  release:
+    # Nur auf main und nur wenn die Tests grün sind. Legt v<version> an, falls es das Release noch nicht gibt.
+    needs: test
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: hmrest-install
+          path: dist
+      - name: Version ermitteln
+        id: v
+        run: echo "version=$(python3 -c "import json;print(json.load(open('custom_components/hmrest/manifest.json'))['version'])")" >> "$GITHUB_OUTPUT"
+      - name: Release anlegen (nur bei neuer Version)
+        env:
+          GH_TOKEN: ${{ github.token }}
+          V: ${{ steps.v.outputs.version }}
+        run: |
+          if gh release view "v$V" >/dev/null 2>&1; then
+            echo "Release v$V existiert bereits – nichts zu tun."; exit 0
+          fi
+          awk -v v="$V" '/^## /{p=($2==v); next} p' CHANGELOG.md > notes.md
+          [ -s notes.md ] || echo "HomeMatic (HM-REST) $V" > notes.md
+          cat >> notes.md <<'TXT'
+
+          ### Installation
+          `hmrest-install-*.zip` herunterladen, im Home-Assistant-Config-Ordner entpacken (es entsteht
+          `custom_components/hmrest`) und Home Assistant neu starten.
+          TXT
+          gh release create "v$V" dist/*.zip --title "HomeMatic (HM-REST) $V" --notes-file notes.md --target "$GITHUB_SHA"

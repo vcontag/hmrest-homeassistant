@@ -72,5 +72,4 @@ Nur das Profil umschalten (z. B. Urlaub/Homeoffice): `profile: 2` + `activate: t
 Batteriebetriebene Thermostate übernehmen die Änderung beim nächsten Funkkontakt (einige Minuten).
 
 ## Änderungen
-- **1.2.0:** Aktionen `set_week_program`/`get_week_program`. Ein einzelner Wert, an dem eine Entität scheitert,
-  bricht den Event-Stream nicht mehr ab (Ursache der Meldung „Event-Stream unterbrochen: could not convert string to float").
+Siehe [CHANGELOG.md](CHANGELOG.md). Fertige Pakete gibt es unter *Releases*.
