@@ -24,13 +24,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: HACS-Prüfung
+      - name: hassfest
+        uses: home-assistant/actions/hassfest@master
+      - name: HACS-Prüfung (nur bei öffentlichem Repo – HACS unterstützt keine privaten)
+        if: ${{ !github.event.repository.private }}
         uses: hacs/action@main
         with:
           category: integration
           ignore: brands description topics
-      - name: hassfest
-        uses: home-assistant/actions/hassfest@master
 
   release:
     # Nur auf main und nur wenn Tests und Prüfungen grün sind. Legt v<version> an, falls es das Release noch nicht gibt.
