@@ -23,6 +23,10 @@ Neue Versionen zeigt HACS danach automatisch als Update an (auch unter *Einstell
 `hmrest-install-<version>.zip` unter *Releases* herunterladen, im Config-Ordner von Home Assistant entpacken
 (es entsteht `custom_components/hmrest`), neu starten und wie oben ab Schritt 5 einrichten.
 
+## Sicherheit
+Die Integration spricht mit HM-REST über unverschlüsseltes HTTP im Heimnetz. Den Port von HM-REST (8099)
+**niemals aus dem Internet erreichbar machen**; für den Zugriff von unterwegs ein VPN oder Home Assistant Cloud nutzen.
+
 ## Was angelegt wird
 - Ein HA-Gerät pro HomeMatic-Gerät (Name, Typ, Firmware, Raum als Bereichsvorschlag).
 - Alle Entity-IDs beginnen mit `homematic_`, z.B. `cover.homematic_rollladen_wohnzimmer`,
@@ -86,5 +90,8 @@ Batteriebetriebene Thermostate übernehmen die Änderung beim nächsten Funkkont
 ## Änderungen
 Siehe [CHANGELOG.md](CHANGELOG.md). Fertige Pakete gibt es unter *Releases*.
 
-## Lizenz
-[MIT](LICENSE)
+## Lizenz und Marken
+[MIT](LICENSE) – Nutzung ohne Gewährleistung und Haftung.
+
+Dieses Projekt ist kein offizielles Produkt der eQ-3 AG und steht in keiner Verbindung zu ihr.
+HomeMatic und Homematic IP sind eingetragene Marken der eQ-3 AG.
