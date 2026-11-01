@@ -85,3 +85,6 @@ Batteriebetriebene Thermostate übernehmen die Änderung beim nächsten Funkkont
 
 ## Änderungen
 Siehe [CHANGELOG.md](CHANGELOG.md). Fertige Pakete gibt es unter *Releases*.
+
+## Lizenz
+[MIT](LICENSE)
