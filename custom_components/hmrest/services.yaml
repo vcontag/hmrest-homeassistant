@@ -1,0 +1,58 @@
+set_week_program:
+  fields:
+    device_id:
+      selector:
+        device:
+          integration: hmrest
+          multiple: true
+    entity_id:
+      selector:
+        entity:
+          integration: hmrest
+          domain: climate
+          multiple: true
+    days:
+      example: "workdays"
+      selector:
+        select:
+          multiple: true
+          translation_key: days
+          options:
+            - monday
+            - tuesday
+            - wednesday
+            - thursday
+            - friday
+            - saturday
+            - sunday
+            - workdays
+            - weekend
+            - all
+    schedule:
+      example: "06:00 17; 22:00 21; 24:00 17"
+      selector:
+        object:
+    profile:
+      selector:
+        number:
+          min: 1
+          max: 6
+          mode: box
+    activate:
+      default: false
+      selector:
+        boolean:
+
+get_week_program:
+  fields:
+    device_id:
+      selector:
+        device:
+          integration: hmrest
+          multiple: true
+    entity_id:
+      selector:
+        entity:
+          integration: hmrest
+          domain: climate
+          multiple: true

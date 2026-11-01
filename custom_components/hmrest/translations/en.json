@@ -1,0 +1,106 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "HomeMatic CCU (HM-REST)",
+        "description": "CCU address, port and API key of the HM-REST add-on.",
+        "data": {
+          "host": "CCU address",
+          "port": "Port",
+          "api_key": "API key",
+          "ssl": "Use HTTPS"
+        }
+      },
+      "reauth_confirm": {
+        "title": "New API key",
+        "description": "HM-REST rejected the API key. Please enter the current key.",
+        "data": {
+          "api_key": "API key"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Cannot reach HM-REST. Is the add-on running and the port open in the CCU firewall?",
+      "invalid_auth": "Invalid API key"
+    },
+    "abort": {
+      "already_configured": "This CCU is already configured",
+      "reauth_successful": "API key updated"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Options",
+        "data": {
+          "include_virtual_remotes": "Create the CCU's virtual remotes",
+          "device_scan_minutes": "Scan for new devices every x minutes",
+          "include_sysvars": "Create system variables",
+          "sysvar_poll_seconds": "Poll system variables every x seconds"
+        }
+      }
+    }
+  },
+  "services": {
+    "set_week_program": {
+      "name": "Set week program",
+      "description": "Writes heating times and temperatures to the week program of a HomeMatic thermostat (e.g. HM-CC-RT-DN). All selected days are sent in a single radio transmission.",
+      "fields": {
+        "device_id": {
+          "name": "Device",
+          "description": "Thermostat(s) whose week program is changed."
+        },
+        "entity_id": {
+          "name": "Climate entity",
+          "description": "Instead of the device: the thermostat's climate entity."
+        },
+        "days": {
+          "name": "Days",
+          "description": "Days the schedule applies to."
+        },
+        "schedule": {
+          "name": "Schedule",
+          "description": "Slots with end time and temperature, the last one ends at 24:00. As a list [{end: '06:00', temp: 17}, …] or as short text: \"06:00 17; 22:00 21; 24:00 17\"."
+        },
+        "profile": {
+          "name": "Profile",
+          "description": "Week profile (1–3 on the HM-CC-RT-DN). Default: the first profile."
+        },
+        "activate": {
+          "name": "Activate profile",
+          "description": "Make the given profile the active one afterwards."
+        }
+      }
+    },
+    "get_week_program": {
+      "name": "Get week program",
+      "description": "Returns the week program of a HomeMatic thermostat as a response.",
+      "fields": {
+        "device_id": {
+          "name": "Device",
+          "description": "Thermostat(s) to read."
+        },
+        "entity_id": {
+          "name": "Climate entity",
+          "description": "Instead of the device: the thermostat's climate entity."
+        }
+      }
+    }
+  },
+  "selector": {
+    "days": {
+      "options": {
+        "monday": "Monday",
+        "tuesday": "Tuesday",
+        "wednesday": "Wednesday",
+        "thursday": "Thursday",
+        "friday": "Friday",
+        "saturday": "Saturday",
+        "sunday": "Sunday",
+        "workdays": "Workdays (Mon–Fri)",
+        "weekend": "Weekend (Sat–Sun)",
+        "all": "All days"
+      }
+    }
+  }
+}
