@@ -31,8 +31,7 @@ Alle Entity-IDs beginnen mit `homematic_`.
 - HACS: Installation als benutzerdefiniertes Repository (Typ Integration); HACS nimmt `custom_components/hmrest` aus dem
   jeweiligen Release-Tag. `hacs.json` und Manifest-Felder (`documentation`, `issue_tracker`, `codeowners`) aktuell halten;
   CI-Job `validate` prüft mit hacs/action und hassfest. HACS setzt ein öffentliches Repo voraus.
-  Ausgenommen sind `brands description topics license` – sobald der Nutzer eine Lizenz gewählt hat (LICENSE-Datei),
-  `license` aus der Ausnahmeliste entfernen.
+  Ausgenommen sind `brands description topics` (Repo-Einstellungen, die nur der Inhaber setzen kann). Lizenz: MIT (`LICENSE`).
 
 ## Releases
 - Ein Release entsteht automatisch, wenn auf `main` eine Versionsnummer landet, für die es noch kein Release gibt
