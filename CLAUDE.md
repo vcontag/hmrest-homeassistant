@@ -28,6 +28,8 @@ Alle Entity-IDs beginnen mit `homematic_`.
 - Betrieb beim Nutzer: Home Assistant im Docker-Container auf einem QNAP; Installation per Upload/Entpacken
   von `hmrest-install-*.zip` in den Config-Ordner und Neustart.
 - Texte für Nutzer auf Deutsch.
+- README behält den Sicherheitshinweis (nur Heimnetz, Port 8099 nie ins Internet) und den Markenhinweis
+  (kein offizielles eQ-3-Produkt, HomeMatic ist Marke der eQ-3 AG).
 - HACS: Installation als benutzerdefiniertes Repository (Typ Integration); HACS nimmt `custom_components/hmrest` aus dem
   jeweiligen Release-Tag. `hacs.json` und Manifest-Felder (`documentation`, `issue_tracker`, `codeowners`) aktuell halten;
   CI-Job `validate` prüft mit hacs/action und hassfest. HACS setzt ein öffentliches Repo voraus.
