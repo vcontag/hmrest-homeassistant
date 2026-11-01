@@ -5,11 +5,23 @@ mit ihren Werten per REST geladen, danach kommen Änderungen sofort über den Ev
 (`/api/events`, Server-Sent Events) – kein Polling.
 
 ## Installation
-1. Ordner `custom_components/hmrest` nach `/config/custom_components/hmrest` kopieren
-   (beim Docker-Container also in das gemappte Config-Verzeichnis).
-2. Home Assistant neu starten.
-3. *Einstellungen → Geräte & Dienste → Integration hinzufügen → „HomeMatic (HM-REST)"*
-4. CCU-Adresse, Port (8099) und API-Key aus der HM-REST-Oberfläche eintragen.
+
+Voraussetzung: das CCU-Add-on [HM-REST](https://github.com/vcontag/hmrest) läuft auf der CCU
+(für Wochenprogramme ≥ 1.6.0).
+
+### Über HACS (empfohlen)
+1. HACS öffnen → Menü ⋮ oben rechts → **Benutzerdefinierte Repositories**.
+2. Repository `https://github.com/vcontag/hmrest-homeassistant`, Typ **Integration** → *Hinzufügen*.
+3. In HACS nach **HomeMatic (HM-REST)** suchen → *Herunterladen*.
+4. Home Assistant neu starten.
+5. *Einstellungen → Geräte & Dienste → Integration hinzufügen → „HomeMatic (HM-REST)"*,
+   CCU-Adresse, Port (8099) und API-Key eintragen.
+
+Neue Versionen zeigt HACS danach automatisch als Update an (auch unter *Einstellungen → Updates*).
+
+### Manuell
+`hmrest-install-<version>.zip` unter *Releases* herunterladen, im Config-Ordner von Home Assistant entpacken
+(es entsteht `custom_components/hmrest`), neu starten und wie oben ab Schritt 5 einrichten.
 
 ## Was angelegt wird
 - Ein HA-Gerät pro HomeMatic-Gerät (Name, Typ, Firmware, Raum als Bereichsvorschlag).
@@ -72,5 +84,4 @@ Nur das Profil umschalten (z. B. Urlaub/Homeoffice): `profile: 2` + `activate: t
 Batteriebetriebene Thermostate übernehmen die Änderung beim nächsten Funkkontakt (einige Minuten).
 
 ## Änderungen
-- **1.2.0:** Aktionen `set_week_program`/`get_week_program`. Ein einzelner Wert, an dem eine Entität scheitert,
-  bricht den Event-Stream nicht mehr ab (Ursache der Meldung „Event-Stream unterbrochen: could not convert string to float").
+Siehe [CHANGELOG.md](CHANGELOG.md). Fertige Pakete gibt es unter *Releases*.
