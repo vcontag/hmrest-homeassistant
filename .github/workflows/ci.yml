@@ -19,9 +19,22 @@ jobs:
           name: hmrest-install
           path: dist/*.zip
 
+  validate:
+    # Offizielle Prüfungen: HACS-Anforderungen und hassfest (Manifest, services.yaml, Übersetzungen)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: HACS-Prüfung
+        uses: hacs/action@main
+        with:
+          category: integration
+          ignore: brands description topics
+      - name: hassfest
+        uses: home-assistant/actions/hassfest@master
+
   release:
-    # Nur auf main und nur wenn die Tests grün sind. Legt v<version> an, falls es das Release noch nicht gibt.
-    needs: test
+    # Nur auf main und nur wenn Tests und Prüfungen grün sind. Legt v<version> an, falls es das Release noch nicht gibt.
+    needs: [test, validate]
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     permissions:

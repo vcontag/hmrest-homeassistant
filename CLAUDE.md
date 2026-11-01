@@ -28,6 +28,9 @@ Alle Entity-IDs beginnen mit `homematic_`.
 - Betrieb beim Nutzer: Home Assistant im Docker-Container auf einem QNAP; Installation per Upload/Entpacken
   von `hmrest-install-*.zip` in den Config-Ordner und Neustart.
 - Texte für Nutzer auf Deutsch.
+- HACS: Installation als benutzerdefiniertes Repository (Typ Integration); HACS nimmt `custom_components/hmrest` aus dem
+  jeweiligen Release-Tag. `hacs.json` und Manifest-Felder (`documentation`, `issue_tracker`, `codeowners`) aktuell halten;
+  CI-Job `validate` prüft mit hacs/action und hassfest. HACS setzt ein öffentliches Repo voraus.
 
 ## Releases
 - Ein Release entsteht automatisch, wenn auf `main` eine Versionsnummer landet, für die es noch kein Release gibt

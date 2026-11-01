@@ -1,12 +1,15 @@
 {
   "domain": "hmrest",
   "name": "HomeMatic (HM-REST)",
-  "codeowners": [],
+  "codeowners": [
+    "@vcontag"
+  ],
   "config_flow": true,
   "dependencies": [],
-  "documentation": "https://github.com/",
+  "documentation": "https://github.com/vcontag/hmrest-homeassistant",
   "integration_type": "hub",
   "iot_class": "local_push",
+  "issue_tracker": "https://github.com/vcontag/hmrest-homeassistant/issues",
   "requirements": [],
   "version": "1.2.0"
 }
